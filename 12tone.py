@@ -15,15 +15,14 @@ def get_new_scale():
 def invert():
     diff = [b - a for (a, b) in zip(numbers[:-1], numbers[1:])]
     for a in range(11):
-        if numbers[a] - diff[a] > 11:
-            numbers[a+1] = numbers[a] - diff[a] - 12
-	elif numbers[a] - diff[a] < -11:
-	    numbers[a+1] = numbers[a] - diff[a] + 12
-        else: 
-            numbers[a+1] = numbers[a] - diff[a]
-    print numbers
+        numbers [a+1] = (numbers[a] - diff[a] + 12) % 12
     return numbers
 
+def transpose():
+    print "By how many semitones?"
+    x = input()
+    return [(numbers[a] + x + 12) % 12 for a in range(12)]
+    
 def print_stuff():
     print
     print "1: Retrograde"
@@ -31,6 +30,7 @@ def print_stuff():
     print "3: Transposition"
     print "4: New 12-Tone Scale"
     print "Other: Quit"
+
 
 
 if input("1: Generate New 12-Tone Scale \n") == 1:
@@ -50,7 +50,8 @@ while True:
         numbers = invert()
         show_scale()
     elif x == 3:
-        transpose()
+        numbers = transpose()
+        show_scale()
     elif x == 4:
         numbers = get_new_scale()
         show_scale()
