@@ -15,13 +15,13 @@ def get_new_scale():
 def invert():
     diff = [b - a for (a, b) in zip(numbers[:-1], numbers[1:])]
     for a in range(11):
-        numbers [a+1] = (numbers[a] - diff[a] + 12) % 12
+        numbers[a+1] = (numbers[a] - diff[a]) % 12
     return numbers
 
 def transpose():
     print "By how many semitones?"
     x = input()
-    return [(numbers[a] + x + 12) % 12 for a in range(12)]
+    return [(a + x) % 12 for a in numbers]
     
 def print_stuff():
     print
