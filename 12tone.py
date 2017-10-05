@@ -3,11 +3,11 @@ import random
 import sys
 
 NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
-numbers = []
+numbers = [3, 10, 1, 6, 11, 7, 2, 5, 0, 9, 4, 8]
 
 
 def show_scale():
-    print [NOTES[i] for i in numbers]
+    print([NOTES[i] for i in numbers])
 
 def get_new_scale():
     return random.sample(range(12), 12)
@@ -19,22 +19,22 @@ def invert():
     return numbers
 
 def transpose():
-    print "By how many semitones?"
-    x = input()
+    print("By how many semitones?")
+    x = int(input())
     return [(a + x) % 12 for a in numbers]
     
 def print_stuff():
-    print
-    print "1: Retrograde"
-    print "2: Inversion"
-    print "3: Transposition"
-    print "4: New 12-Tone Scale"
-    print "Other: Quit"
+    print()
+    print("1: Retrograde")
+    print("2: Inversion")
+    print("3: Transposition")
+    print("4: New 12-Tone Scale")
+    print("Other: Quit")
 
 
 
-if input("1: Generate New 12-Tone Scale \n") == 1:
-    numbers = get_new_scale()
+if input("1: Generate New 12-Tone Scale \n") == '1':
+    #numbers = get_new_scale()
     show_scale()
 else:
     sys.exit(0)
@@ -42,17 +42,17 @@ else:
 while True:
     print_stuff()
     x = input()
-    if x == 1:
+    if x == '1':
         #retrograde code
         numbers.reverse()
         show_scale()
-    elif x == 2:
+    elif x == '2':
         numbers = invert()
         show_scale()
-    elif x == 3:
+    elif x == '3':
         numbers = transpose()
         show_scale()
-    elif x == 4:
+    elif x == '4':
         numbers = get_new_scale()
         show_scale()
     else:
